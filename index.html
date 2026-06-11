@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BBITE — KI-gestützte Handwerker- und Produkt-Vergleichsplattform</title>
+<meta name="description" content="BBITE ist eine KI-gestützte Handwerker- und Produkt-Vergleichsplattform für Heimwerken, Bauen, Renovieren und Outdoor. Die KI-Plattform durchsucht automatisch mehrere Online-Shops, analysiert Produktdaten und vergleicht Preise, Verfügbarkeiten sowie Produktdetails in Echtzeit." />
+<meta name="robots" content="index,follow" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://bbite.de/" />
+<meta property="og:title" content="BBITE — KI-gestützte Handwerker- und Produkt-Vergleichsplattform" />
+<meta property="og:description" content="BBITE ist eine KI-gestützte Handwerker- und Produkt-Vergleichsplattform für Heimwerken, Bauen, Renovieren und Outdoor. Die KI-Plattform durchsucht automatisch mehrere Online-Shops, analysiert Produktdaten und vergleicht Preise, Verfügbarkeiten sowie Produktdetails in Echtzeit." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#02030a;--fg:#e9ecff;--accent:#8aa9ff}
+html,body{height:100%}
+body{font-family:"Space Grotesk",system-ui,sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden}
+#stars,#stars2,#stars3{position:fixed;inset:0;pointer-events:none}
+.comet{position:fixed;top:30%;left:-20%;width:140%;height:300px;transform:rotate(-18deg);background:radial-gradient(ellipse at left,rgba(138,169,255,.18),transparent 60%);filter:blur(20px);pointer-events:none}
+.wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px}
+.topbar{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:22px 32px;font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(233,236,255,.4);z-index:3}
+.label{display:flex;align-items:center;gap:12px;justify-content:center;font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(233,236,255,.45);margin-bottom:18px}
+.label .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.label .line{width:40px;height:1px;background:rgba(233,236,255,.25)}
+h1{font-size:96px;font-weight:600;letter-spacing:-4px;line-height:1;background:linear-gradient(180deg,#fff,#9bb0ff);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px}
+.sub{font-style:italic;font-size:22px;font-weight:300;color:rgba(233,236,255,.78);margin-bottom:38px}
+.lead{max-width:680px;font-size:17px;font-weight:300;line-height:1.7;color:rgba(233,236,255,.7);margin:0 auto 40px}
+.cats-title{font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:rgba(233,236,255,.4);margin-bottom:18px}
+.cats{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:720px;margin:0 auto}
+.cat{border:1px solid rgba(138,169,255,.25);background:rgba(138,169,255,.05);border-radius:999px;padding:9px 18px;font-size:13px;letter-spacing:.5px;color:rgba(233,236,255,.82)}
+.bottombar{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:22px 32px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(233,236,255,.35);z-index:3}
+.bottombar a{color:rgba(233,236,255,.5);text-decoration:none}
+@media(max-width:600px){h1{font-size:60px}.topbar,.bottombar{padding:16px}}
+#stars{box-shadow:436px 1712px #fff,1044px 1591px #fff,1415px 321px #fff,350px 587px #fff,226px 978px #fff,1153px 1748px #fff,1591px 526px #fff,129px 1728px #fff,1127px 712px #fff,1226px 1680px #fff,1592px 1252px #fff,379px 424px #fff,364px 10px #fff,1571px 559px #fff,1066px 1278px #fff,1201px 439px #fff,1150px 1506px #fff,359px 1242px #fff,748px 601px #fff,627px 1093px #fff,737px 5px #fff,1649px 1302px #fff,1688px 672px #fff,943px 150px #fff,1310px 1331px #fff,1739px 439px #fff,999px 951px #fff,34px 605px #fff,159px 1838px #fff,1323px 176px #fff,1154px 1292px #fff,1887px 1485px #fff,176px 1286px #fff,1715px 1458px #fff,156px 1128px #fff,652px 795px #fff,1098px 1729px #fff,801px 87px #fff,574px 354px #fff,1494px 1169px #fff,447px 936px #fff,1323px 404px #fff,1751px 1418px #fff,1126px 628px #fff,1378px 1151px #fff,1050px 666px #fff,42px 579px #fff,777px 765px #fff,451px 1787px #fff,1022px 363px #fff,181px 1393px #fff,361px 395px #fff,980px 1597px #fff,171px 1262px #fff,1512px 1653px #fff,1484px 248px #fff,225px 120px #fff,1408px 1546px #fff,809px 1099px #fff,895px 843px #fff,293px 72px #fff,896px 400px #fff,1345px 1130px #fff,342px 868px #fff,484px 1586px #fff,1619px 25px #fff,1619px 86px #fff,629px 1046px #fff,156px 273px #fff,292px 1198px #fff,1876px 614px #fff,1380px 1336px #fff,810px 232px #fff,422px 537px #fff,265px 1575px #fff,1457px 35px #fff,1890px 607px #fff,422px 1579px #fff,1198px 1081px #fff,1296px 1706px #fff,1182px 1504px #fff,1697px 715px #fff,810px 1563px #fff,1105px 806px #fff,786px 1043px #fff,1891px 1696px #fff,434px 453px #fff,820px 1216px #fff,1469px 887px #fff,1698px 1415px #fff,729px 1852px #fff,1277px 612px #fff,700px 725px #fff,968px 1140px #fff,328px 1429px #fff,1217px 1764px #fff,894px 275px #fff,1679px 254px #fff,1531px 1468px #fff,853px 1681px #fff,1756px 824px #fff,1229px 1058px #fff,1642px 939px #fff,1549px 498px #fff,348px 1020px #fff,1822px 72px #fff,521px 1108px #fff,502px 86px #fff,518px 1572px #fff,1534px 351px #fff,1191px 472px #fff,545px 1217px #fff,16px 994px #fff,729px 965px #fff,686px 1391px #fff,959px 1798px #fff,105px 1876px #fff,1865px 1643px #fff,1124px 1005px #fff,671px 1299px #fff,851px 802px #fff,971px 182px #fff,534px 218px #fff,535px 150px #fff,213px 1347px #fff,967px 1330px #fff,974px 786px #fff,595px 1790px #fff,247px 377px #fff,405px 1792px #fff,175px 672px #fff,1228px 269px #fff,53px 1392px #fff,985px 1110px #fff,909px 1440px #fff,555px 1697px #fff,1446px 94px #fff,1476px 1564px #fff,1891px 1635px #fff,782px 1793px #fff,1440px 1835px #fff,1839px 1222px #fff,1642px 126px #fff,796px 207px #fff,359px 559px #fff,283px 121px #fff,1354px 231px #fff,837px 1613px #fff,878px 182px #fff,124px 1173px #fff,1620px 1320px #fff,110px 1454px #fff,1365px 398px #fff,1077px 1523px #fff,1333px 1579px #fff,1188px 761px #fff,1444px 24px #fff,1029px 9px #fff,764px 1566px #fff,1334px 1578px #fff;width:1px;height:1px;border-radius:50%;opacity:.8}
+#stars2{box-shadow:1535px 1013px #fff,1378px 187px #fff,352px 183px #fff,376px 435px #fff,1498px 1804px #fff,1516px 555px #fff,912px 179px #fff,1710px 325px #fff,1753px 710px #fff,838px 298px #fff,1477px 241px #fff,1585px 346px #fff,300px 652px #fff,1399px 565px #fff,490px 1216px #fff,1520px 1351px #fff,929px 839px #fff,1161px 1606px #fff,279px 1307px #fff,162px 18px #fff,1264px 500px #fff,1794px 368px #fff,913px 163px #fff,1355px 651px #fff,67px 687px #fff,740px 770px #fff,443px 300px #fff,965px 1586px #fff,852px 362px #fff,912px 497px #fff,340px 673px #fff,1835px 824px #fff,1401px 80px #fff,871px 150px #fff,668px 1242px #fff,1159px 1722px #fff,1880px 530px #fff,414px 944px #fff,675px 144px #fff,1624px 1796px #fff,854px 463px #fff,993px 1321px #fff,366px 481px #fff,439px 247px #fff,447px 1026px #fff,1876px 1296px #fff,1501px 1527px #fff,1181px 1778px #fff,1272px 614px #fff,1819px 1437px #fff,1122px 1692px #fff,1780px 1399px #fff,727px 1467px #fff,1125px 1769px #fff,1150px 1201px #fff,1234px 362px #fff,756px 459px #fff,1758px 413px #fff,1571px 992px #fff,460px 623px #fff;width:2px;height:2px;border-radius:50%;opacity:.6}
+</style>
+</head>
+<body>
+<div id="stars"></div>
+<div id="stars2"></div>
+<div class="comet"></div>
+<div class="topbar"><span>BBITE · EST. 2026</span><span>● IM AUFBAU</span></div>
+<main class="wrap">
+  <div class="label"><span class="line"></span><span class="dot"></span>COMING SOON<span class="line"></span></div>
+  <h1>BBITE</h1>
+  <p class="sub">etwas neues entsteht</p>
+  <p class="lead">BBITE ist eine KI-gestützte Handwerker- und Produkt-Vergleichsplattform für Heimwerken, Bauen, Renovieren und Outdoor. Die KI-Plattform durchsucht automatisch mehrere Online-Shops, analysiert Produktdaten und vergleicht Preise, Verfügbarkeiten sowie Produktdetails in Echtzeit.</p>
+  <p class="cats-title">Kategorien</p>
+  <div class="cats">
+    <span class="cat">Baumarkt &amp; Heimwerken</span>
+    <span class="cat">Werkzeuge</span>
+    <span class="cat">Bauen &amp; Renovieren</span>
+    <span class="cat">Garten &amp; Outdoor</span>
+    <span class="cat">Elektronik &amp; Computer</span>
+    <span class="cat">Auto-Teile</span>
+    <span class="cat">Motorrad</span>
+    <span class="cat">Fahrrad</span>
+    <span class="cat">Camping &amp; Outdoor</span>
+    <span class="cat">Foto</span>
+    <span class="cat">Basteln &amp; Handmade</span>
+  </div>
+</main>
+<div class="bottombar"><span>52°31′N 13°24′E</span><span><a href="mailto:prusincov@gmail.com">prusincov@gmail.com</a> · IMPRESSUM</span></div>
+</body>
+</html>
