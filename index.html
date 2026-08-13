@@ -16,7 +16,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#02030a;--fg:#e9ecff;--accent:#8aa9ff}
 html,body{height:100%}
-body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--fg);overflow:hidden}
+body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;overflow-y:auto}
 #sky{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;display:block}
 .comet{position:fixed;top:28%;left:-25%;width:150%;height:320px;transform:rotate(-18deg);background:radial-gradient(ellipse at left,rgba(138,169,255,.14),transparent 60%);filter:blur(22px);z-index:1;pointer-events:none}
 .wrap{position:relative;z-index:3;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;pointer-events:none}
@@ -29,6 +29,18 @@ body{font-family:'Space Grotesk',system-ui,sans-serif;background:var(--bg);color
 .label .line{width:40px;height:1px;background:rgba(233,236,255,.25)}
 h1{font-size:96px;font-weight:600;letter-spacing:-4px;line-height:1;background:linear-gradient(180deg,#fff,#9bb0ff);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:14px}
 .sub{font-style:italic;font-size:22px;font-weight:300;color:rgba(233,236,255,.78)}
+.wait{margin-top:38px;width:100%;max-width:560px;pointer-events:auto}
+.wait-row{display:flex;align-items:center;gap:10px;background:rgba(138,169,255,.05);border:1px solid rgba(138,169,255,.25);border-radius:999px;padding:7px 7px 7px 22px;transition:border-color .25s,box-shadow .25s}
+.wait-row:focus-within{border-color:rgba(138,169,255,.5);box-shadow:0 0 26px rgba(138,169,255,.12)}
+.wait-input{flex:1;min-width:0;background:none;border:none;outline:none;color:var(--fg);font-family:inherit;font-size:15px;font-weight:300;padding:12px 0}
+.wait-input::placeholder{color:rgba(233,236,255,.38)}
+.wait-btn{flex:none;border:none;cursor:pointer;border-radius:999px;background:var(--accent);color:#02030a;font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.4px;white-space:nowrap;padding:13px 26px;transition:background .25s,box-shadow .25s,opacity .25s}
+.wait-btn:hover:not(:disabled){background:#a9c0ff;box-shadow:0 0 26px rgba(138,169,255,.35)}
+.wait-btn:disabled{opacity:.5;cursor:default}
+.wait-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.wait-note{margin-top:13px;font-size:11.5px;font-weight:300;line-height:1.6;color:rgba(233,236,255,.4)}
+.wait-note.err{color:#ffa1a1}
+.wait-note.ok{color:var(--accent)}
 .panel{position:fixed;top:0;left:0;height:100%;width:380px;max-width:86vw;background:rgba(6,8,20,.92);backdrop-filter:blur(14px);border-right:1px solid rgba(138,169,255,.18);transform:translateX(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1);z-index:8;padding:80px 32px 40px;overflow-y:auto}
 .panel.open{transform:translateX(0)}
 .panel-close{position:absolute;top:22px;right:24px;background:none;border:none;color:rgba(233,236,255,.6);font-size:26px;cursor:pointer;line-height:1}
@@ -41,7 +53,7 @@ h1{font-size:96px;font-weight:600;letter-spacing:-4px;line-height:1;background:l
 .overlay.open{opacity:1;visibility:visible}
 .bottombar{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-between;padding:20px 28px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(233,236,255,.35);z-index:6}
 .bottombar a{color:rgba(233,236,255,.5);text-decoration:none}
-@media(max-width:600px){h1{font-size:60px}}
+@media(max-width:600px){h1{font-size:60px}.wrap{padding:96px 20px 88px}.wait{margin-top:30px}.wait-row{flex-direction:column;align-items:stretch;gap:8px;border-radius:26px;padding:8px}.wait-input{padding:12px 16px;text-align:center}.wait-btn{width:100%;padding:14px 20px}}
 </style>
 </head>
 <body>
@@ -72,6 +84,14 @@ h1{font-size:96px;font-weight:600;letter-spacing:-4px;line-height:1;background:l
 <div class="label"><span class="line"></span><span class="dot"></span>COMING SOON<span class="line"></span></div>
 <h1>BBITE</h1>
 <p class="sub">etwas neues entsteht</p>
+<form class="wait" id="waitForm" novalidate>
+<div class="wait-row">
+<input class="wait-input" id="waitEmail" type="email" name="email" placeholder="Deine E-Mail-Adresse" autocomplete="email" spellcheck="false" aria-label="E-Mail-Adresse" required />
+<button class="wait-btn" id="waitBtn" type="submit">Warteliste beitreten</button>
+</div>
+<input class="wait-hp" id="waitHp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+<p class="wait-note" id="waitNote">Eine E-Mail zum Start — kein Spam, jederzeit abbestellbar. Mit dem Absenden stimmst du der Speicherung deiner E-Mail-Adresse zu diesem Zweck zu.</p>
+</form>
 </main>
 <div class="bottombar"><span>52°31′N 13°24′E</span><span><a href="mailto:prusincov@gmail.com">prusincov@gmail.com</a> · IMPRESSUM</span></div>
 <script>
@@ -91,6 +111,29 @@ window.addEventListener("resize",resize);resize();requestAnimationFrame(frame);
 </script>
 <script>
 (function(){var p=document.getElementById("panel"),o=document.getElementById("overlay"),b=document.getElementById("menuBtn"),cl=document.getElementById("panelClose");function op(){p.classList.add("open");o.classList.add("open");}function cs(){p.classList.remove("open");o.classList.remove("open");}b.addEventListener("click",op);cl.addEventListener("click",cs);o.addEventListener("click",cs);document.addEventListener("keydown",function(e){if(e.key==="Escape")cs();});})();
+</script>
+<script>
+(function(){
+var KEY="__WEB3FORMS_ACCESS_KEY__";
+var f=document.getElementById("waitForm"),i=document.getElementById("waitEmail"),b=document.getElementById("waitBtn"),n=document.getElementById("waitNote"),hp=document.getElementById("waitHp");
+var IDLE=n.textContent,DONE="Danke! Du stehst auf der Warteliste.",sending=false;
+var RE=/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+function say(m,c){n.textContent=m;n.className=c?"wait-note "+c:"wait-note";}
+function done(){say(DONE,"ok");f.reset();i.disabled=true;b.textContent="Eingetragen";}
+f.addEventListener("submit",function(e){
+e.preventDefault();
+if(sending)return;
+if(hp.value){done();return;}
+var v=i.value.trim();
+if(!RE.test(v)){say("Bitte gib eine gültige E-Mail-Adresse ein.","err");i.focus();return;}
+sending=true;b.disabled=true;say("Wird gesendet …");
+fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:KEY,subject:"BBITE Warteliste — neue Anmeldung",from_name:"BBITE Warteliste",email:v})})
+.then(function(r){return r.json().catch(function(){return null;});})
+.then(function(d){if(d&&d.success){done();}else{say("Senden fehlgeschlagen. Bitte später erneut versuchen.","err");b.disabled=false;sending=false;}})
+.catch(function(){say("Keine Verbindung. Bitte später erneut versuchen.","err");b.disabled=false;sending=false;});
+});
+i.addEventListener("input",function(){if(n.className!=="wait-note")say(IDLE);});
+})();
 </script>
 </body>
 </html>
